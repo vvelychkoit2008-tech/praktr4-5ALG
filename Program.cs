@@ -14,7 +14,9 @@ public static class RoundRobinListDemo
             Console.Write(list.CurrentValue);
             list.MoveBack();
             if (i < 9)
+            {
                 Console.Write(",");
+            }
         }
         Console.WriteLine();
         //свій код писати можна лише в цьому методі
@@ -25,14 +27,18 @@ public static class RoundRobinListDemo
         for (int i = 0; i < list.Count; i++)
         {
             if (list.CurrentValue < min)
+            {
                 min = list.CurrentValue.Value;
+            }
             list.MoveNext();
         }
         // тепер повертаємось до мінімального елемента
         for (int i = 0; i < list.Count; i++)
         {
             if (list.CurrentValue == min)
+            {
                 break;
+            }
             list.MoveNext();
         }
         var minValue = list.CurrentValue; //очікуваний результат 0
@@ -54,14 +60,18 @@ public static class RoundRobinListDemo
         for (int i = 0; i < list.Count; i++)
         {
             if (list.CurrentValue < minValueTask4)
+            {
                 minValueTask4 = list.CurrentValue.Value;
+            } 
             list.MoveNext();
         }
         //2. Перейти на елемент із мінімальним значенням
         for (int i = 0; i < list.Count; i++)
         {
             if (list.CurrentValue == minValueTask4)
+            {
                 break;
+            }
             list.MoveNext();
         }
         Console.WriteLine("ЗАВДАННЯ 4 — мінімальний елемент списку: " + list.CurrentValue);
@@ -237,6 +247,7 @@ public class RoundRobinList
 
     }
 }
+//штучка яка це все запускає
 class Program
 {
     public static void Main()
