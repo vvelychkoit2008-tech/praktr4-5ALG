@@ -17,11 +17,10 @@ public static class RoundRobinListDemo
                 Console.Write(",");
         }
         Console.WriteLine();
-
         //свій код писати можна лише в цьому методі
         //встановити  список на мінімальний елемент
         //ваш алгоритм має бути тут
-        // --- СПОСІБ 1: обхід циклу один раз для пошуку мінімального ---
+        //СПОСІБ 1: обхід циклу один раз для пошуку мінімального
         int min = list.CurrentValue.Value;
         for (int i = 0; i < list.Count; i++)
         {
@@ -29,7 +28,6 @@ public static class RoundRobinListDemo
                 min = list.CurrentValue.Value;
             list.MoveNext();
         }
-
         // тепер повертаємось до мінімального елемента
         for (int i = 0; i < list.Count; i++)
         {
@@ -37,27 +35,21 @@ public static class RoundRobinListDemo
                 break;
             list.MoveNext();
         }
-
         var minValue = list.CurrentValue; //очікуваний результат 0
         Console.WriteLine("СПОСІБ 1 — мінімальний елемент: " + minValue);
-
-        // --- СПОСІБ 2: обхід у зворотному напрямку для створення масиву ---
+        //СПОСІБ 2: обхід у зворотному напрямку для створення масиву
         int[] array = new int[list.Count];
         for (int i = list.Count - 1; i >= 0; i--)
         {
             array[i] = list.CurrentValue.Value;
             list.MoveBack(); // йдемо у зворотному напрямку
         }
-
         Console.WriteLine("СПОСІБ 2 — масив у зворотньому порядку: " + string.Join(',', array)); //очікуваний результат 0,1,2
-
-
         // ЗАВДАННЯ 4:
         /* В методі RoundRobinListDemo.Run() в зазначеному місці дописати свої алгоритми, які виконують наступну логіку:
          1. Встановити активний елемент списку в елемент з найменшим значенням.
          2. Перевести значення елементів списку в масив, обійшовши всі елементи списку в зворотньому порядку. */
-
-        // === 1. Знайти мінімальний елемент вручну ===
+        //1. Знайти мінімальний елемент вручну
         int minValueTask4 = list.CurrentValue ?? 0;
         for (int i = 0; i < list.Count; i++)
         {
@@ -65,25 +57,22 @@ public static class RoundRobinListDemo
                 minValueTask4 = list.CurrentValue.Value;
             list.MoveNext();
         }
-
-        // === 2. Перейти на елемент із мінімальним значенням ===
+        //2. Перейти на елемент із мінімальним значенням
         for (int i = 0; i < list.Count; i++)
         {
             if (list.CurrentValue == minValueTask4)
                 break;
             list.MoveNext();
         }
-
         Console.WriteLine("ЗАВДАННЯ 4 — мінімальний елемент списку: " + list.CurrentValue);
 
-        // === 3. Обійти всі елементи у зворотньому порядку й записати у масив ===
+        //3. Обійти всі елементи у зворотньому порядку й записати у масив
         int[] backwardArray = new int[list.Count];
         for (int i = list.Count - 1; i >= 0; i--)
         {
             backwardArray[i] = list.CurrentValue.Value;
             list.MoveBack();
         }
-
         Console.WriteLine("ЗАВДАННЯ 4 — список у зворотньому порядку: " + string.Join(",", backwardArray));
     }
 }
@@ -238,43 +227,16 @@ public class RoundRobinList
     {
         // алгоритм що перетворить циклічний список у масив,
         // обійшовши список в прямому порядку
-        if (_pointerNode == null || _count == 0)
-            return new int[0];
-
-        int[] array = new int[_count];
-        var start = _pointerNode;
-        var current = start;
-
-        for (int i = 0; i < _count; i++)
-        {
-            array[i] = current.Value;
-            current = (InternalNode)current.Next!;
-        }
-
-        return array;
+        throw new NotImplementedException();
     }
-
     public int[] ToArrayBackward()
     {
         // алгоритм що перетворить циклічний список у масив,
         // обійшовши список в зворотньому порядку
-        if (_pointerNode == null || _count == 0)
-            return new int[0];
+        throw new NotImplementedException();
 
-        int[] array = new int[_count];
-        var start = _pointerNode;
-        var current = start;
-
-        for (int i = _count - 1; i >= 0; i--)
-        {
-            array[i] = current.Value;
-            current = (InternalNode)current.Prev!;
-        }
-
-        return array;
     }
 }
-//штучка щоб це все щастя запустити:
 class Program
 {
     public static void Main()
