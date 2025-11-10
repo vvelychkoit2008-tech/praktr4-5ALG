@@ -41,7 +41,7 @@ public static class RoundRobinListDemo
             }
             list.MoveNext();
         }
-        var minValue = list.CurrentValue; //очікуваний результат 0
+        var minValue = list.CurrentValue;
         Console.WriteLine("СПОСІБ 1 — мінімальний елемент: " + minValue);
         //СПОСІБ 2: обхід у зворотному напрямку для створення масиву
         int[] array = new int[list.Count];
@@ -50,7 +50,7 @@ public static class RoundRobinListDemo
             array[i] = list.CurrentValue.Value;
             list.MoveBack(); // йдемо у зворотному напрямку
         }
-        Console.WriteLine("СПОСІБ 2 — масив у зворотньому порядку: " + string.Join(',', array)); //очікуваний результат 0,1,2
+        Console.WriteLine("СПОСІБ 2 — масив у зворотньому порядку: " + string.Join(',', array));
         // ЗАВДАННЯ 4:
         /* В методі RoundRobinListDemo.Run() в зазначеному місці дописати свої алгоритми, які виконують наступну логіку:
          1. Встановити активний елемент списку в елемент з найменшим значенням.
